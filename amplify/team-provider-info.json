@@ -1,0 +1,14 @@
+{
+    "env": {
+        "awscloudformation": {
+            "AuthRoleName": "wenger-payment-env-20190918003115-authRole",
+            "UnauthRoleArn": "arn:aws:iam::523857292082:role/wenger-payment-env-20190918003115-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::523857292082:role/wenger-payment-env-20190918003115-authRole",
+            "Region": "eu-west-1",
+            "DeploymentBucketName": "wenger-payment-env-20190918003115-deployment",
+            "UnauthRoleName": "wenger-payment-env-20190918003115-unauthRole",
+            "StackName": "wenger-payment-env-20190918003115",
+            "StackId": "arn:aws:cloudformation:eu-west-1:523857292082:stack/wenger-payment-env-20190918003115/dd6670a0-d99a-11e9-a9d0-0677a5c9174c"
+        }
+    }
+}
