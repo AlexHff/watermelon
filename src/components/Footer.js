@@ -4,7 +4,7 @@ class Footer extends Component {
     render() {
         return (
             <footer>
-                Footer
+                © 2019 Wenger Systems.
             </footer>
         );
     }
