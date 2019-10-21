@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { users } from "./database/users";
+import { users as usersDB } from "../database/users";
 
 const UserContext = React.createContext(null);
 
 class UserProvider extends Component {
     state =  {
-        users: users
+        users: usersDB
     };
 
     render() {

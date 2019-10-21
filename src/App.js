@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 import { Switch, Route } from "react-router-dom";
 import './App.css';
-import Main from "./components/Main";
+import PrivateRoute from './PrivateRoute';
 import Navigation from "./components/Navigation";
+import Main from "./components/Main";
 import Footer from "./components/Footer";
 import Default from "./components/Default";
+import Wallet from "./components/Wallet";
+import Login from "./components/Login";
+import Register from "./components/Register";
 
 class App extends Component {
     render() {
@@ -13,6 +17,9 @@ class App extends Component {
                 <Navigation />
                 <Switch>
                     <Route exact path="/" component={Main} />
+                    <PrivateRoute path="/wallet" component={Wallet} />
+                    <Route path="/login" component={Login} />
+                    <Route path="/register" component={Register} />
                     <Route component={Default} />
                 </Switch>
                 <Footer />

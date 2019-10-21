@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Jumbotron, Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import User from "./User";
 
 class Main extends Component {
@@ -12,7 +13,9 @@ class Main extends Component {
                         It's free to send money to friends and family when you use your wallet balance.
                     </p>
                     <p>
-                        <Button variant="primary">Send Money Now</Button>
+                        <Link to="/wallet">
+                            <Button variant="primary">Send Money Now</Button>
+                        </Link>
                     </p>
                 </Jumbotron>
                 <User />
