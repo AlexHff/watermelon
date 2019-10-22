@@ -31,7 +31,7 @@ class Navigation extends Component {
                 <Navbar.Collapse className="justify-content-end">
                     {user ? (
                         <Navbar.Text className="justify-content-end">
-                            Hello, {user.first_name}
+                            Hello, <Link to="/me">{user.first_name}</Link>
                         </Navbar.Text>
                     ) : (
                         <Navbar.Text className="justify-content-end">

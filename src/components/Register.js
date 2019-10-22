@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { Form, Button } from "react-bootstrap";
 import { Link } from 'react-router-dom';
 
-var users = JSON.parse(localStorage.getItem('users'));
-
 class Register extends Component {
     constructor(props) {
         super(props);
@@ -20,6 +18,7 @@ class Register extends Component {
     }
 
     handleSubmit = (event) => {
+        var users = JSON.parse(localStorage.getItem('users'));
         var index = users.findIndex(user => user.email === this.state.email);
         if (index >= 0) {
             alert('User already exists');
@@ -36,6 +35,15 @@ class Register extends Component {
             users.push(user);
             localStorage.setItem('user', JSON.stringify(user));
             localStorage.setItem('users', JSON.stringify(users));
+            var wallets = JSON.parse(localStorage.getItem('wallets'));
+            var wid = wallets[wallets.length - 1].id + 1;
+            var wallet = {
+                id: wid,
+                user_id: uid,
+                amount: 0
+            };
+            wallets.push(wallet);
+            localStorage.setItem('wallets', JSON.stringify(wallets));
             window.location.href = "/";
         }
         event.preventDefault();

@@ -9,6 +9,8 @@ import Default from "./components/Default";
 import Wallet from "./components/Wallet";
 import Login from "./components/Login";
 import Register from "./components/Register";
+import User from "./components/User";
+import Card from "./components/Card";
 
 import { cards } from "./database/cards";
 import { payins } from "./database/payins";
@@ -41,6 +43,8 @@ class App extends Component {
                 <Switch>
                     <Route exact path="/" component={Main} />
                     <PrivateRoute path="/wallet" component={Wallet} />
+                    <PrivateRoute path="/card" component={Card} />
+                    <PrivateRoute path="/me" component={User} />
                     <Route path="/login" component={Login} />
                     <Route path="/register" component={Register} />
                     <Route component={Default} />

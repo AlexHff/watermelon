@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { Form, Button } from "react-bootstrap";
 import { Link } from 'react-router-dom';
 
-var users = JSON.parse(localStorage.getItem('users'));
-
 class Login extends Component {
     constructor(props) {
         super(props);
@@ -18,6 +16,8 @@ class Login extends Component {
     }
 
     handleSubmit = (event) => {
+        event.preventDefault();
+        var users = JSON.parse(localStorage.getItem('users'));
         var index = users.findIndex(user => user.email === this.state.email);
         if (index >= 0 && users[index].password === this.state.password) {
             const user = users[index];
@@ -26,7 +26,6 @@ class Login extends Component {
         } else {
             alert("Wrong email or password");
         }
-        event.preventDefault();
     }
 
     render() {
