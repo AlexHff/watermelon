@@ -1,4 +1,4 @@
-export default [
+export const cards = [
     {
         id: 1,
         last_four: '4321',

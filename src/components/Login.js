@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Form, Button } from "react-bootstrap";
 import { Link } from 'react-router-dom';
-import { users } from "../database/users";
+
+var users = JSON.parse(localStorage.getItem('users'));
 
 class Login extends Component {
     constructor(props) {

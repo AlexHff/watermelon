@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Navbar, Nav } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import logo from "../assets/logo.png";
 
 class Navigation extends Component {
@@ -11,19 +12,19 @@ class Navigation extends Component {
 
     render() {
         var user = JSON.parse(localStorage.getItem('user'));
-        console.log(user);
         return (
             <Navbar bg="dark" variant="dark">
-                <Navbar.Brand href="/">
+                <Link to="/">
                     <img src={logo} alt="logo" width="42" height="auto" style={{ transform: "rotate(45deg)" }} />
-                </Navbar.Brand>
+                </Link>
                 <Nav className="mr-auto">
-                    <Nav.Link href="/">Home</Nav.Link>
-                    <Nav.Link href="/wallet">Wallet</Nav.Link>
+                    <Link to="/">Home</Link>
+                    <Link to="/wallet">Wallet</Link>
+                    <Nav.Link href="#">Test</Nav.Link>
                     {user ? (
                         <Nav.Link href="/" onClick={this.handleClick}>Logout</Nav.Link>
                     ) : (
-                        <Nav.Link href="/login">Login</Nav.Link>
+                        <Link to="/login">Login</Link>
                     )}
                 </Nav>
                 <Navbar.Toggle />
@@ -34,7 +35,7 @@ class Navigation extends Component {
                         </Navbar.Text>
                     ) : (
                         <Navbar.Text className="justify-content-end">
-                            Hello
+                            You must be looged in to send money
                         </Navbar.Text>
                     )}
                 </Navbar.Collapse>
