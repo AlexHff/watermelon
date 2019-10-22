@@ -43,7 +43,7 @@ class Card extends Component {
         }
         cards.push(card);
         localStorage.setItem('cards', JSON.stringify(cards));
-        window.location.href = "/wallet";
+        this.props.history.push('/wallet');
     }
 
     render() {
