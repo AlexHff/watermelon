@@ -16,6 +16,12 @@ class Wallet extends Component {
         return wallets[index];
     }
 
+    handleDelete = (card, cards) => {
+        cards.splice(cards.indexOf(card), 1);
+        localStorage.setItem('cards', JSON.stringify(cards));
+        this.props.history.push('/wallet');
+    }
+
     getCards = () => {
         const user = JSON.parse(localStorage.getItem('user'));
         const cards = JSON.parse(localStorage.getItem('cards'));
@@ -24,13 +30,15 @@ class Wallet extends Component {
                 cards.splice(cards.indexOf(card), 1);
         });
         const listCards = cards.map((card) =>
-            <Cards
-                key={card.id}
-                number={"000000000000" + card.last_four}
-                name={user.first_name + ' ' + user.last_name}
-                expiry={card.expired_at}
-                cvc=''
-            />
+            <div key={card.id} className="listCards">
+                <Cards
+                    number={"000000000000" + card.last_four}
+                    name={user.first_name + ' ' + user.last_name}
+                    expiry={card.expired_at}
+                    cvc=''
+                />
+                <Button variant="danger" onClick={() => this.handleDelete(card, cards)}>Delete</Button>
+            </div>
         );
         return listCards;
     }
