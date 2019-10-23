@@ -22,6 +22,10 @@ class Login extends Component {
         if (index >= 0 && users[index].password === this.state.password) {
             const user = users[index];
             localStorage.setItem('user', JSON.stringify(user));
+            var wallets = JSON.parse(localStorage.getItem('wallets'));
+            var wid = wallets.findIndex(wallet => wallet.user_id === user.id);
+            var wallet = wallets[wid];
+            localStorage.setItem('wallet', JSON.stringify(wallet));
             window.location.href = "/";
         } else {
             alert("Wrong email or password");

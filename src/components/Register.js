@@ -43,6 +43,7 @@ class Register extends Component {
                 amount: 0
             };
             wallets.push(wallet);
+            localStorage.setItem('wallet', JSON.stringify(wallet));
             localStorage.setItem('wallets', JSON.stringify(wallets));
             window.location.href = "/";
         }

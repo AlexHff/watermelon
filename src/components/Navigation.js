@@ -7,6 +7,7 @@ class Navigation extends Component {
     handleClick = (event) => {
         event.preventDefault();
         localStorage.removeItem('user');
+        localStorage.removeItem('wallet');
         window.location.href = "/";
     }
 

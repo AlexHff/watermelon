@@ -96,13 +96,17 @@ class Card extends Component {
 
                             <Form.Group as={Col} controlId="formGridCardIssuer">
                                 <Form.Control
-                                    type="string"
+                                    as="select"
                                     name="issuer"
                                     placeholder="Brand"
                                     required 
                                     onChange={this.handleInputChange}
                                     onFocus={this.handleInputFocus}
-                                />
+                                >
+                                    <option>VISA</option>
+                                    <option>MasterCard</option>
+                                    <option>Other</option>
+                                </Form.Control>
                             </Form.Group>
                         </Form.Row>
 

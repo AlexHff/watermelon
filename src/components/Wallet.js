@@ -6,14 +6,7 @@ import Cards from 'react-credit-cards';
 class Wallet extends Component {
     constructor(props) {
         super(props);
-        this.state = this.getWallet();
-    }
-
-    getWallet = () => {
-        var wallets = JSON.parse(localStorage.getItem('wallets'));
-        var user = JSON.parse(localStorage.getItem('user'));
-        var index = wallets.findIndex(wallet => wallet.user_id === user.id);
-        return wallets[index];
+        this.state = JSON.parse(localStorage.getItem('wallet'));
     }
 
     handleDelete = (card, cards) => {
@@ -48,6 +41,9 @@ class Wallet extends Component {
         return (
             <div className="Wallet">
                 <h1>{this.state.amount} €</h1>
+                <Link to="/payin">
+                    <Button variant="success">Payin</Button>
+                </Link>
                 {listCards}
                 <Link to="/card">
                     <Button variant="primary">Add Card</Button>
