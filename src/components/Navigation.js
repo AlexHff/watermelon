@@ -21,7 +21,7 @@ class Navigation extends Component {
                 <Nav className="mr-auto">
                     <Link to="/">Home</Link>
                     <Link to="/wallet">Wallet</Link>
-                    <Nav.Link href="#">Test</Nav.Link>
+                    <Link to="/transfer">Transfer</Link>
                     {user ? (
                         <Nav.Link href="/" onClick={this.handleClick}>Logout</Nav.Link>
                     ) : (
