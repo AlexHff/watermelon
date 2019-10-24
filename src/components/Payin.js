@@ -61,6 +61,7 @@ class Payin extends Component {
                             type="number"
                             name="amount"
                             placeholder="Amount"
+                            min="0"
                             required
                             value={this.state.amount}
                             onChange={this.handleChange}

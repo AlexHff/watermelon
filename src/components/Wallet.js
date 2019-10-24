@@ -44,6 +44,9 @@ class Wallet extends Component {
                 <Link to="/payin">
                     <Button variant="success">Payin</Button>
                 </Link>
+                <Link to="/payout">
+                    <Button variant="outline-success">Payout</Button>
+                </Link>
                 {listCards}
                 <Link to="/card">
                     <Button variant="primary">Add Card</Button>
