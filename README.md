@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://github.com/AlexHff/wenger-payment">
-    <img src="src/assets/logo.png" width="380px" />
+    <img src="src/assets/logo.png" width="190px" />
   </a>
 </p>
 
