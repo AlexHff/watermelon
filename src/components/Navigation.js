@@ -15,17 +15,17 @@ class Navigation extends Component {
         var user = JSON.parse(localStorage.getItem('user'));
         return (
             <Navbar bg="dark" variant="dark">
-                <Link to="/">
+                <Link to="/" style={{color: 'white', marginRight: '10px'}}>
                     <img src={logo} alt="logo" width="42" height="auto" style={{ transform: "rotate(45deg)" }} />
                 </Link>
                 <Nav className="mr-auto">
-                    <Link to="/">Home</Link>
-                    <Link to="/wallet">Wallet</Link>
-                    <Link to="/transfer">Transfer</Link>
+                    <Link to="/" style={{color: 'white', marginRight: '10px'}}>Home</Link>
+                    <Link to="/wallet" style={{color: 'white', marginRight: '10px'}}>Wallet</Link>
+                    <Link to="/transfer" style={{color: 'white', marginRight: '10px'}}>Transfer</Link>
                     {user ? (
-                        <Nav.Link href="/" onClick={this.handleClick}>Logout</Nav.Link>
+                        <Link to="/" onClick={this.handleClick} style={{color: 'white', marginRight: '10px'}}>Logout</Link>
                     ) : (
-                        <Link to="/login">Login</Link>
+                        <Link to="/login" style={{color: 'white', marginRight: '10px'}}>Login</Link>
                     )}
                 </Nav>
                 <Navbar.Toggle />

@@ -41,10 +41,12 @@ class Payin extends Component {
     getCards = () => {
         const user = JSON.parse(localStorage.getItem('user'));
         const cards = JSON.parse(localStorage.getItem('cards'));
-        cards.forEach(card => {
-            if (card.user_id !== user.id)
-                cards.splice(cards.indexOf(card), 1);
-        });
+        for (let i = 0; i < cards.length; i++) {
+            if (cards[i].user_id !== user.id) {
+                cards.splice(cards.indexOf(cards[i]), 1);
+                i--;
+            }
+        }
         const listCards = cards.map((card) =>
             <option key={card.id}>{card.brand} {card.last_four} {card.expired_at}</option>
         );
