@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Jumbotron, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import User from "./User";
 
 class Main extends Component {
     render() {
@@ -18,7 +17,6 @@ class Main extends Component {
                         </Link>
                     </p>
                 </Jumbotron>
-                <User />
             </div>
         );
     }

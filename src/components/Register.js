@@ -3,30 +3,97 @@ import { Form, Button } from "react-bootstrap";
 import { Link } from 'react-router-dom';
 
 class Register extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            firstname: '',
+            lastname: '',
+            email: '',
+            password: ''
+        };
+    }
+    
+    handleChange = (event) => {
+        this.setState({[event.target.name]: event.target.value});
+    }
+
+    handleSubmit = (event) => {
+        var users = JSON.parse(localStorage.getItem('users'));
+        var index = users.findIndex(user => user.email === this.state.email);
+        if (index >= 0) {
+            alert('User already exists');
+        } else {
+            var uid = users[users.length - 1].id + 1;
+            var user = {
+                id: uid,
+                first_name: this.state.firstname,
+                last_name: this.state.lastname,
+                email: this.state.email,
+                password: this.state.password,
+                is_admin: false
+            };
+            users.push(user);
+            localStorage.setItem('user', JSON.stringify(user));
+            localStorage.setItem('users', JSON.stringify(users));
+            var wallets = JSON.parse(localStorage.getItem('wallets'));
+            var wid = wallets[wallets.length - 1].id + 1;
+            var wallet = {
+                id: wid,
+                user_id: uid,
+                amount: 0
+            };
+            wallets.push(wallet);
+            localStorage.setItem('wallet', JSON.stringify(wallet));
+            localStorage.setItem('wallets', JSON.stringify(wallets));
+            window.location.href = "/";
+        }
+        event.preventDefault();
+    }
+
     render() {
         return (
             <div className="Register">
-                <Form>
+                <Form onSubmit={this.handleSubmit}>
                     <Form.Group controlId="firstname">
                         <Form.Label>First name</Form.Label>
-                        <Form.Control type="text" placeholder="First name " />
+                        <Form.Control
+                            name="firstname"
+                            type="text"
+                            value={this.state.firstname}
+                            onChange={this.handleChange}
+                            placeholder="Enter your first name" />
                     </Form.Group>
 
                     <Form.Group controlId="lastname">
                         <Form.Label>Last name</Form.Label>
-                        <Form.Control type="text" placeholder="Last name" />
+                        <Form.Control
+                            name="lastname"
+                            type="text"
+                            value={this.state.lastname}
+                            onChange={this.handleChange}
+                            placeholder="Enter your last name" />
                     </Form.Group>
 
                     <Form.Group controlId="email">
                         <Form.Label>Email address</Form.Label>
-                        <Form.Control type="email" placeholder="Enter email" />
+                        <Form.Control
+                            name="email"
+                            type="email"
+                            value={this.state.email}
+                            onChange={this.handleChange}
+                            placeholder="Enter email" />
                     </Form.Group>
 
                     <Form.Group controlId="password">
                         <Form.Label>Password</Form.Label>
-                        <Form.Control type="password" placeholder="Password" />
+                        <Form.Control
+                            name="password"
+                            type="password"
+                            value={this.state.password}
+                            onChange={this.handleChange}
+                            placeholder="Password" />
                     </Form.Group>
-                    <Button variant="primary" type="submit">
+                    <Button variant="primary" type="submit" value="Submit">
                         Submit
                     </Button>
                 </Form>

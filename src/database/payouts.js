@@ -1,7 +1,7 @@
-export default [
+export const payouts = [
     {
-        id: 1,
-        wallet_id: 1,
-        amount: 5
+        id: 0,
+        wallet_id: 0,
+        amount: 0
     },
 ];
