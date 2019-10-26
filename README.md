@@ -1,8 +1,8 @@
 <p align="center">
   <a href="https://github.com/AlexHff/wenger-payment">
-    <img src="src/assets/logo.png" />
+    <img src="src/assets/logo.png" width="380px" />
   </a>
-  [https://www.wenger-systems.com/](https://www.wenger-systems.com/)
+  <a href="https://www.wenger-systems.com/">https://www.wenger-systems.com/</a>
 </p>
 
 # Wenger Payment (Watermelon)
