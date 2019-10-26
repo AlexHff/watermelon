@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, Col, Button } from "react-bootstrap";
+import { Form, Button } from "react-bootstrap";
 
 class Payout extends Component {
     constructor(props) {
@@ -75,7 +75,7 @@ class Payout extends Component {
                         />
                     </Form.Group>
 
-                    <Form.Group as={Col} controlId="formGridCard">
+                    <Form.Group controlId="formGridCard">
                         <Form.Control
                             as="select"
                             name="card"

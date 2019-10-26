@@ -46,7 +46,7 @@ class App extends Component {
             <div>
                 <Navigation />
                 <div className="App">
-                    <BCard style={{ width: '50%', padding: '25px 25px 25px 25px' }}>
+                    <BCard style={{ width: '800px', padding: '25px 25px 25px 25px' }}>
                         <Switch>
                             <Route exact path="/" component={Main} />
                             <PrivateRoute path="/wallet" component={Wallet} />

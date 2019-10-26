@@ -6,7 +6,13 @@ import Cards from 'react-credit-cards';
 class Wallet extends Component {
     constructor(props) {
         super(props);
-        this.state = JSON.parse(localStorage.getItem('wallet'));
+        const wallet = JSON.parse(localStorage.getItem('wallet'));
+        this.state = {
+            id: wallet.id,
+            user_id: wallet.user_id,
+            amount: wallet.amount,
+            show: false
+        }
     }
 
     handleDelete = (card) => {
@@ -27,14 +33,15 @@ class Wallet extends Component {
             }
         }
         const listCards = cards.map((card) =>
-            <div key={card.id} className="listCards">
+            <div key={card.id} className="listCards" style={{ margin: '30px' }}>
                 <Cards
                     number={"000000000000" + card.last_four}
                     name={user.first_name + ' ' + user.last_name}
                     expiry={card.expired_at}
                     cvc=''
                 />
-                <Button variant="danger" onClick={() => this.handleDelete(card, cards)}>Delete</Button>
+                <br />
+                <Button variant="danger" onClick={() => this.handleDelete(card)} style={{ marginLeft: '5px' }}>Delete</Button>
             </div>
         );
         return listCards;
@@ -44,11 +51,13 @@ class Wallet extends Component {
         const listCards = this.getCards();
         return (
             <div className="Wallet">
+                <h2>Watermelon balance</h2>
                 <h1>{this.state.amount / 100} €</h1>
-                <Link to="/payin">
+                <br />
+                <Link to="/payin" style={{ marginRight: '5px' }}>
                     <Button variant="success">Payin</Button>
                 </Link>
-                <Link to="/payout">
+                <Link to="/payout" style={{ marginLeft: '5px' }}>
                     <Button variant="outline-success">Payout</Button>
                 </Link>
                 {listCards}
