@@ -28,12 +28,12 @@ class Payout extends Component {
             alert("You do not have enough money in your wallet.");
         } else {
             var index = wallets.findIndex(wallet => wallet.id === this.state.wallet_id);
-            wallet.amount -= parseInt(this.state.amount, 10);
+            wallet.amount -= parseFloat(this.state.amount, 10) * 100;
             if (index !== -1)
                 wallets[index] = wallet;
             else
                 wallets.push(wallet);
-            payout.amount = parseInt(payout.amount, 10);
+            payout.amount = parseFloat(payout.amount, 10) * 100;
             payouts.push(payout);
             localStorage.setItem('wallet', JSON.stringify(wallet));
             localStorage.setItem('wallets', JSON.stringify(wallets));
@@ -66,6 +66,8 @@ class Payout extends Component {
                             name="amount"
                             placeholder="Amount"
                             required
+                            min="0"
+                            step=".01"
                             value={this.state.amount}
                             onChange={this.handleChange}
                         />

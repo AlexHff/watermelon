@@ -14,6 +14,7 @@ import Card from "./components/Card";
 import Payin from "./components/Payin";
 import Payout from "./components/Payout";
 import Transfer from "./components/Transfer";
+import EditUser from "./components/EditUser";
 
 import { cards } from "./database/cards";
 import { payins } from "./database/payins";
@@ -51,6 +52,7 @@ class App extends Component {
                     <PrivateRoute path="/payout" component={Payout} />
                     <PrivateRoute path="/transfer" component={Transfer} />
                     <PrivateRoute path="/me" component={User} />
+                    <PrivateRoute path="/edit" component={EditUser} />
                     <Route path="/login" component={Login} />
                     <Route path="/register" component={Register} />
                     <Route component={Default} />

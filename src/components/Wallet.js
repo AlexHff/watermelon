@@ -20,10 +20,12 @@ class Wallet extends Component {
     getCards = () => {
         const user = JSON.parse(localStorage.getItem('user'));
         const cards = JSON.parse(localStorage.getItem('cards'));
-        cards.forEach(card => {
-            if (card.user_id !== user.id)
-                cards.splice(cards.indexOf(card), 1);
-        });
+        for (let i = 0; i < cards.length; i++) {
+            if (cards[i].user_id !== user.id) {
+                cards.splice(cards.indexOf(cards[i]), 1);
+                i--;
+            }
+        }
         const listCards = cards.map((card) =>
             <div key={card.id} className="listCards">
                 <Cards
@@ -42,7 +44,7 @@ class Wallet extends Component {
         const listCards = this.getCards();
         return (
             <div className="Wallet">
-                <h1>{this.state.amount} €</h1>
+                <h1>{this.state.amount / 100} €</h1>
                 <Link to="/payin">
                     <Button variant="success">Payin</Button>
                 </Link>

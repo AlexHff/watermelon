@@ -25,12 +25,12 @@ class Payin extends Component {
         var payins = JSON.parse(localStorage.getItem('payins'));
         var payin = this.state;
         var index = wallets.findIndex(wallet => wallet.id === this.state.wallet_id);
-        wallet.amount += parseInt(this.state.amount, 10);
+        wallet.amount += parseFloat(this.state.amount, 10) * 100;
         if (index !== -1)
             wallets[index] = wallet;
         else
             wallets.push(wallet);
-        payin.amount = parseInt(payin.amount, 10);
+        payin.amount = parseFloat(payin.amount, 10) * 100;
         payins.push(payin);
         localStorage.setItem('wallet', JSON.stringify(wallet));
         localStorage.setItem('wallets', JSON.stringify(wallets));
@@ -62,6 +62,7 @@ class Payin extends Component {
                             name="amount"
                             placeholder="Amount"
                             min="0"
+                            step=".01"
                             required
                             value={this.state.amount}
                             onChange={this.handleChange}

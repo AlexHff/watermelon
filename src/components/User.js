@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 var user = JSON.parse(localStorage.getItem('user'));
 
@@ -21,6 +22,9 @@ class User extends Component {
                         <Col>{user.email}</Col>
                     </Row>
                 </Container>
+                <Link to="/edit">
+                    <Button variant="primary">Edit</Button>
+                </Link>
             </div>
         );
     }

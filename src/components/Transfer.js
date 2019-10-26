@@ -32,22 +32,30 @@ class Transfer extends Component {
             var creditedUserIndex = users.findIndex(user => user.email === this.state.email);
             var creditedUser = users[creditedUserIndex];
             if (creditedUserIndex >= 0 && creditedUser.id !== debitedUser.id) {
-                console.log(creditedUserIndex + " " + debitedUser.id);
                 var creditedWalletIndex = wallets.findIndex(wallet => wallet.user_id === creditedUser.id);
                 var creditedWallet = wallets[creditedWalletIndex];
-                creditedWallet.amount += parseInt(this.state.amount, 10);
+                creditedWallet.amount += parseFloat(this.state.amount, 10) * 100;
                 if (creditedWalletIndex !== -1)
                     wallets[creditedWalletIndex] = creditedWallet;
                 else
                     wallets.push(creditedWallet);
                 var debitedWalletIndex = wallets.findIndex(wallet => wallet.user_id === debitedUser.id);
-                debitedWallet.amount -= parseInt(this.state.amount, 10);
+                debitedWallet.amount -= parseFloat(this.state.amount, 10) * 100;
                 if (debitedWalletIndex !== -1)
                     wallets[debitedWalletIndex] = debitedWallet;
                 else
                     wallets.push(debitedWallet);
                 localStorage.setItem('wallet', JSON.stringify(debitedWallet));
                 localStorage.setItem('wallets', JSON.stringify(wallets))
+                var transfers = JSON.parse(localStorage.getItem('transfers'));
+                var transfer = {
+                    id: this.state.id,
+                    debited_wallet_id: debitedWallet.id,
+                    credited_wallet_id: creditedWallet.id,
+                    amount: this.state.amount * 100
+                };
+                transfers.push(transfer);
+                localStorage.setItem('transfers', JSON.stringify(transfers));
                 this.props.history.push('/wallet');
             } else {
                 alert("This email doesn't exist");
@@ -66,6 +74,7 @@ class Transfer extends Component {
                             placeholder="Amount"
                             required
                             min="0"
+                            step=".01"
                             value={this.state.amount}
                             onChange={this.handleChange}
                         />
@@ -83,7 +92,7 @@ class Transfer extends Component {
                     </Form.Group>
 
                     <Button variant="primary" type="submit">
-                        Payout
+                        Transfer
                     </Button>
                 </Form>
             </div>
