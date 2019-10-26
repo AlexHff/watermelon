@@ -6,11 +6,12 @@ import { Form, Col, Button } from "react-bootstrap";
 class Card extends Component {
     constructor(props) {
         super(props);
+        var user = JSON.parse(localStorage.getItem('user'));
         this.state = {
             cvc: '',
             expiry: '',
             focus: '',
-            name: '',
+            name: user.first_name + " " + user.last_name,
             number: '',
             issuer: ''
         };
@@ -26,8 +27,13 @@ class Card extends Component {
     }
 
     handleInputChange = (e) => {
-        const { name, value } = e.target;
-        this.setState({ [name]: value });
+        if (e.target.name === 'expiry') {
+            const value = e.target.value.substr(5, 6) + '/' + e.target.value.substr(2, 2);
+            this.setState({ expiry: value });
+        } else {
+            const { name, value } = e.target;
+            this.setState({ [name]: value });
+        }
     }
 
     handleSubmit = (e) => {
@@ -70,25 +76,15 @@ class Card extends Component {
                             />
                         </Form.Group>
 
-                        <Form.Group controlId="formGridName">
-                            <Form.Control
-                                type="text"
-                                name="name"
-                                placeholder="Name"
-                                required
-                                onChange={this.handleInputChange}
-                                onFocus={this.handleInputFocus}
-                            />
-                        </Form.Group>
-
                         <Form.Row>
                             <Form.Group as={Col} controlId="formGridExpiry">
                                 <Form.Control
-                                    type="tel"
+                                    type="month"
                                     name="expiry"
                                     placeholder="Valid thru"
-                                    pattern="\d\d/\d\d"
                                     required
+                                    min="2019-11"
+                                    max="2024-11"
                                     onChange={this.handleInputChange}
                                     onFocus={this.handleInputFocus}
                                 />

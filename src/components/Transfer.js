@@ -30,8 +30,9 @@ class Transfer extends Component {
         } else {
             var users = JSON.parse(localStorage.getItem('users'));
             var creditedUserIndex = users.findIndex(user => user.email === this.state.email);
-            if (creditedUserIndex >= 0) {
-                var creditedUser = users[creditedUserIndex];
+            var creditedUser = users[creditedUserIndex];
+            if (creditedUserIndex >= 0 && creditedUser.id !== debitedUser.id) {
+                console.log(creditedUserIndex + " " + debitedUser.id);
                 var creditedWalletIndex = wallets.findIndex(wallet => wallet.user_id === creditedUser.id);
                 var creditedWallet = wallets[creditedWalletIndex];
                 creditedWallet.amount += parseInt(this.state.amount, 10);
@@ -64,6 +65,7 @@ class Transfer extends Component {
                             name="amount"
                             placeholder="Amount"
                             required
+                            min="0"
                             value={this.state.amount}
                             onChange={this.handleChange}
                         />

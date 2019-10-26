@@ -9,8 +9,10 @@ class Wallet extends Component {
         this.state = JSON.parse(localStorage.getItem('wallet'));
     }
 
-    handleDelete = (card, cards) => {
-        cards.splice(cards.indexOf(card), 1);
+    handleDelete = (card) => {
+        const cards = JSON.parse(localStorage.getItem('cards'));
+        const cardIndex = cards.findIndex(curCard => curCard.id === card.id);
+        cards.splice(cardIndex, 1);
         localStorage.setItem('cards', JSON.stringify(cards));
         this.props.history.push('/wallet');
     }

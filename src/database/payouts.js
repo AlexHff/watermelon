@@ -1,7 +1,7 @@
 export const payouts = [
     {
-        id: 1,
-        wallet_id: 1,
+        id: 0,
+        wallet_id: 0,
         amount: 0
     },
 ];
