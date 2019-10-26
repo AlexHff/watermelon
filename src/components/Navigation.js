@@ -36,7 +36,7 @@ class Navigation extends Component {
                         </Navbar.Text>
                     ) : (
                         <Navbar.Text className="justify-content-end">
-                            You must be looged in to send money
+                            You must be logged in to send money
                         </Navbar.Text>
                     )}
                 </Navbar.Collapse>

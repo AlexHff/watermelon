@@ -38,7 +38,6 @@ class Card extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        console.log(this.state);
         var cards = JSON.parse(localStorage.getItem('cards'));
         var cid = cards[cards.length - 1].id + 1;
         var card = {
@@ -50,7 +49,7 @@ class Card extends Component {
         }
         cards.push(card);
         localStorage.setItem('cards', JSON.stringify(cards));
-        //this.props.history.push('/wallet');
+        this.props.history.push('/wallet');
     }
 
     render() {

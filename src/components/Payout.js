@@ -24,7 +24,7 @@ class Payout extends Component {
         var wallets = JSON.parse(localStorage.getItem('wallets'));
         var payouts = JSON.parse(localStorage.getItem('payouts'));
         var payout = this.state;
-        if (this.state.amount > wallet.amount) {
+        if (this.state.amount * 100 > wallet.amount) {
             alert("You do not have enough money in your wallet.");
         } else {
             var index = wallets.findIndex(wallet => wallet.id === this.state.wallet_id);

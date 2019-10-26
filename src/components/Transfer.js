@@ -25,7 +25,7 @@ class Transfer extends Component {
         var debitedUser = JSON.parse(localStorage.getItem('user'));
         var debitedWallet = JSON.parse(localStorage.getItem('wallet'));
         var wallets = JSON.parse(localStorage.getItem('wallets'));
-        if (this.state.amount > debitedWallet.amount) {
+        if (this.state.amount * 100 > debitedWallet.amount) {
             alert("You do not have enough money in your wallet.");
         } else {
             var users = JSON.parse(localStorage.getItem('users'));
