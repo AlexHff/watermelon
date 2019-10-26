@@ -13,7 +13,7 @@ class Card extends Component {
             focus: '',
             name: user.first_name + " " + user.last_name,
             number: '',
-            issuer: ''
+            issuer: 'VISA'
         };
     }
 
@@ -38,6 +38,7 @@ class Card extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
+        console.log(this.state);
         var cards = JSON.parse(localStorage.getItem('cards'));
         var cid = cards[cards.length - 1].id + 1;
         var card = {
@@ -49,7 +50,7 @@ class Card extends Component {
         }
         cards.push(card);
         localStorage.setItem('cards', JSON.stringify(cards));
-        this.props.history.push('/wallet');
+        //this.props.history.push('/wallet');
     }
 
     render() {
@@ -95,13 +96,14 @@ class Card extends Component {
                                     as="select"
                                     name="issuer"
                                     placeholder="Brand"
+                                    value={this.state.value}
                                     required 
                                     onChange={this.handleInputChange}
                                     onFocus={this.handleInputFocus}
                                 >
-                                    <option>VISA</option>
-                                    <option>MasterCard</option>
-                                    <option>Other</option>
+                                    <option value="VISA">VISA</option>
+                                    <option value="MasterCard">MasterCard</option>
+                                    <option value="Other">Other</option>
                                 </Form.Control>
                             </Form.Group>
                         </Form.Row>
